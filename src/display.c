@@ -29,7 +29,7 @@ SPDX-License-Identifier: MIT
 
 /* === Headers files inclusions =============================================================== */
 
-#include "poncho.h"
+#include "display.h"
 
 /* === Macros definitions ====================================================================== */
 
