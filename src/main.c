@@ -63,39 +63,10 @@
 
 int main(void) {
 
-    int divisor = 0;
-
     board_t board = BoardCreate();
 
     while (true) {
-        if (DigitalInputGetState(board->tec_1)) {
-            DigitalOutputActivate(board->led_b);
-        } else {
-            DigitalOutputDeactivate(board->led_b);
-        }
-
-        if (DigitalInputHasActivated(board->tec_2)) {
-            DigitalOutputToggle(board->led_1);
-        }
-
-        if (DigitalInputGetState(board->tec_3)) {
-            DigitalOutputActivate(board->led_2);
-        }
-        if (DigitalInputGetState(board->tec_4)) {
-            DigitalOutputDeactivate(board->led_2);
-        }
-
-        divisor++;
-        if (divisor == 1) {
-            divisor = 0;
-            DigitalOutputToggle(board->led_3);
-        }
-
-        for (int index = 0; index < 100; index++) {
-            for (int delay = 0; delay < 25000; delay++) {
-                __asm("NOP");
-            }
-        }
+        
     }
 }
 

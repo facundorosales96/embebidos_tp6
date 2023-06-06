@@ -49,16 +49,13 @@ extern "C" {
  *  tipo de dato struct que almacena punteros a los descriptores de entradas y salidas
  */
 typedef struct board_s{
-    digital_output_t led_1; //!< Puntero a descriptor de la salida led_1
-    digital_output_t led_2; //!< Puntero a descriptor de la salida led_2
-    digital_output_t led_3; //!< Puntero a descriptor de la salida led_3
-    digital_output_t led_r; //!< Puntero a descriptor de la salida led_r
-    digital_output_t led_g; //!< Puntero a descriptor de la salida led_g
-    digital_output_t led_b; //!< Puntero a descriptor de la salida led_b
-    digital_input_t tec_1;  //!< Puntero a descriptor de la entrada tec_1
-    digital_input_t tec_2;  //!< Puntero a descriptor de la entrada tec_2
-    digital_input_t tec_3;  //!< Puntero a descriptor de la entrada tec_3
-    digital_input_t tec_4;  //!< Puntero a descriptor de la entrada tec_4
+    digital_output_t buzzer;    //!< Puntero a descriptor de la salida buzzer
+    digital_input_t set_time;   //!< Puntero a descriptor de la entrada set_time
+    digital_input_t set_alarm;  //!< Puntero a descriptor de la entrada set_alarm
+    digital_input_t decrement;  //!< Puntero a descriptor de la entrada decrement
+    digital_input_t increment;  //!< Puntero a descriptor de la entrada increment
+    digital_input_t accept;     //!< Puntero a descriptor de la entrada accept
+    digital_input_t cancel;     //!< Puntero a descriptor de la entrada cancel
 } const * const board_t;
 
 /* === Public variable declarations ============================================================ */
