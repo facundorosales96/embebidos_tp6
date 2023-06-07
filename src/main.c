@@ -44,6 +44,7 @@
 #include "chip.h"
 #include <digital.h>
 #include <stdbool.h>
+#include <stddef.h>
 
 /* === Macros definitions ====================================================================== */
 
@@ -66,7 +67,39 @@ int main(void) {
     board_t board = BoardCreate();
 
     while (true) {
-        
+        if (DigitalInputHasActivated(board->accept)) {
+            DigitalOutputActivate(board->buzzer);
+            DisplayWriteBCD(board->display, (uint8_t[]){4, 3, 2, 1}, 4);
+        }
+
+        if (DigitalInputHasActivated(board->cancel)) {
+            DigitalOutputDeactivate(board->buzzer);
+            DisplayWriteBCD(board->display, NULL, 0);
+        }
+
+        if (DigitalInputHasActivated(board->set_time)) {
+            DisplayWriteBCD(board->display, (uint8_t[]){4, 0, 0, 0}, 4);
+        }
+
+        if (DigitalInputHasActivated(board->set_alarm)) {
+            DisplayWriteBCD(board->display, (uint8_t[]){0, 3, 0, 0}, 4);
+        }
+
+        if (DigitalInputHasActivated(board->decrement)) {
+            DisplayWriteBCD(board->display, (uint8_t[]){0, 0, 2, 0}, 4);
+        }
+
+        if (DigitalInputHasActivated(board->increment)) {
+            DisplayWriteBCD(board->display, (uint8_t[]){0, 0, 0, 1}, 4);
+        }
+
+        DisplayRefresh(board->display);
+
+        for (int index = 0; index < 100; index++) {
+            for (int delay = 0; delay < 200; delay++) {
+                __asm("NOP");
+            }
+        }
     }
 }
 

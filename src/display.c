@@ -79,14 +79,14 @@ display_t DisplayAllocate(void) {
 /* === Public function implementation ========================================================== */
 
 display_t DisplayCreate(uint8_t digits, display_driver_t driver) {
-    display_t display = DisplayAllocate;
+    display_t display = DisplayAllocate();
 
     if (display) {
         display->digits = digits;
         display->active_digit = digits - 1;
         memcpy(display->driver, driver, sizeof(display->driver));
         memset(display->memory, 0, sizeof(display->memory));
-        display->driver->ScreenTurnOff;
+        display->driver->ScreenTurnOff();
     }
     return display;
 }
@@ -105,6 +105,8 @@ void DisplayRefresh(display_t display) {
     display->active_digit = (display->active_digit + 1) % display->digits;
     display->driver->SegmentsTurnOn(display->memory[display->active_digit]);
     display->driver->DigitTurnOn(display->active_digit);
+
+    return;
 }
 /* === End of documentation ==================================================================== */
 

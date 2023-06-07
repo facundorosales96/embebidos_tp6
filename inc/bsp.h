@@ -33,6 +33,7 @@ SPDX-License-Identifier: MIT
 /* === Headers files inclusions ================================================================ */
 
 #include "digital.h"
+#include "display.h"
 
 /* === Cabecera C++ ============================================================================ */
 
@@ -48,14 +49,15 @@ extern "C" {
  * @brief Descriptores de la placa
  *  tipo de dato struct que almacena punteros a los descriptores de entradas y salidas
  */
-typedef struct board_s{
-    digital_output_t buzzer;    //!< Puntero a descriptor de la salida buzzer
-    digital_input_t set_time;   //!< Puntero a descriptor de la entrada set_time
-    digital_input_t set_alarm;  //!< Puntero a descriptor de la entrada set_alarm
-    digital_input_t decrement;  //!< Puntero a descriptor de la entrada decrement
-    digital_input_t increment;  //!< Puntero a descriptor de la entrada increment
-    digital_input_t accept;     //!< Puntero a descriptor de la entrada accept
-    digital_input_t cancel;     //!< Puntero a descriptor de la entrada cancel
+typedef struct board_s {
+    digital_output_t buzzer;   //!< Puntero a descriptor de la salida buzzer
+    digital_input_t set_time;  //!< Puntero a descriptor de la entrada set_time
+    digital_input_t set_alarm; //!< Puntero a descriptor de la entrada set_alarm
+    digital_input_t decrement; //!< Puntero a descriptor de la entrada decrement
+    digital_input_t increment; //!< Puntero a descriptor de la entrada increment
+    digital_input_t accept;    //!< Puntero a descriptor de la entrada accept
+    digital_input_t cancel;    //!< Puntero a descriptor de la entrada cancel
+    display_t display;         //!< Puntero a descirptor de la pantalla
 } const * const board_t;
 
 /* === Public variable declarations ============================================================ */
@@ -63,7 +65,7 @@ typedef struct board_s{
 /* === Public function declarations ============================================================ */
 /**
  * @brief Crea descriptor de la Placa
- * 
+ *
  * @return board_t
  */
 board_t BoardCreate(void);

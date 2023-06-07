@@ -35,11 +35,11 @@ SPDX-License-Identifier: MIT
 
 /* === Macros definitions ====================================================================== */
 #ifndef OUTPUT_INSTANCES
-#define OUTPUT_INSTANCES 6
+#define OUTPUT_INSTANCES 1
 #endif
 
 #ifndef INPUT_INSTANCES
-#define INPUT_INSTANCES 4
+#define INPUT_INSTANCES 6
 #endif
 /* === Private data type declarations ========================================================== */
 
@@ -126,15 +126,12 @@ digital_output_t DigitalOutputCreate(uint8_t port, uint8_t pin, bool inverted) {
 }
 void DigitalOutputActivate(digital_output_t output) {
     Chip_GPIO_SetPinState(LPC_GPIO_PORT, output->port, output->pin, output->inverted ^ true);
-    return;
 }
 void DigitalOutputDeactivate(digital_output_t output) {
     Chip_GPIO_SetPinState(LPC_GPIO_PORT, output->port, output->pin, output->inverted ^ false);
-    return;
 }
 void DigitalOutputToggle(digital_output_t output) {
     Chip_GPIO_SetPinToggle(LPC_GPIO_PORT, output->port, output->pin);
-    return;
 }
 
 /* ENTRADAS */
